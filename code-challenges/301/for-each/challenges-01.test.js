@@ -57,15 +57,14 @@ Return the modified array.
 
 const removeOne = (num, arr) => {
   let newNum = (num % 3)
-  while (newNum = 2){
+  if (newNum === 2){
      arr.pop()
   }
 }
 
 const removeElements = (arr, callback) => {
-  let original_length = arr.length
-  for(let i = 0; i < original_length; i++){
-    callback()
+  for(let i = 0; i < arr.length; i++){
+    callback(arr[i], arr)
   }
   return arr
 }
