@@ -37,9 +37,9 @@ const addValues = (arr, value) => {
 }
 
 const addNumbers = (num, arr, times, callback) => {
-    for(let i = 0; i < times; i++){
-      callback(arr, num)
-    }
+  for(let i = 0; i < times; i++){
+    callback(arr, num)
+  }
   return arr
 }
 
@@ -58,7 +58,7 @@ Return the modified array.
 const removeOne = (num, arr) => {
   let newNum = (num % 3)
   if (newNum === 2){
-     arr.pop()
+    arr.pop()
   }
 }
 
@@ -76,7 +76,10 @@ Write a function named removeWithForEach that produces the same output as challe
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithForEach = (arr, callback) => {
-  // Solution code here...
+  arr.forEach(function(value) {
+    callback(value, arr)
+  })
+  return arr
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,13 +93,19 @@ This anonymous function should accept up to three arguments: the element, the in
 ------------------------------------------------------------------------------------------------ */
 
 const removeWithAnon = (arr) => {
-  // Solution code here...
+  arr.forEach(function(el, indx, arr){
+    let newNum = (el % 3)
+    if (newNum === 2){
+      arr.pop()
+    }
+  })
+  return arr
 }
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named createList that takes in an array of the current store intentory.
+Write a function named createList that takes in an array of the current store inventory.
 
 The inventory is formatted like this:
 [
@@ -110,8 +119,15 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
+
 const createList = (availableItems) => {
-  // Solution code here...
+  let arr = []
+  availableItems.forEach(function(item){
+    if(item.available === true){
+      arr.push(item.name)
+    }
+  })
+  return arr
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,7 +145,21 @@ Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
 const fizzbuzz = (arr) => {
-  // Solution code here...
+  arr.forEach(function(num, indx){
+    let divThree = (num % 3)
+    let divFive = (num % 5)
+    let divFifteen = (num % 15)
+    if (divFifteen === 0){
+      arr.splice(indx, 1, 'Fizz Buzz')
+    } else if (divThree === 0){
+      arr.splice(indx, 1, 'Fizz')
+    } else if (divFive === 0){
+      arr.splice(indx, 1, 'Buzz')
+    } else {
+      arr.splice(indx, 1, num)
+    }
+  })
+  return arr
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -156,7 +186,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe.only('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should remove three elements from the array', () => {
     expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne)).toStrictEqual([1, 2, 3, 4, 5, 6, 7]);
     expect(removeElements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], removeOne).length).toStrictEqual(7);
@@ -186,7 +216,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-describe('Testing challenge 7', () => {
+describe.only('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
