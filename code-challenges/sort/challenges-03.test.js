@@ -286,7 +286,7 @@ describe('Testing challenge 7', () => {
   });
 });
 
-describe.only('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),

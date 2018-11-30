@@ -14,10 +14,12 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 const howMuchPencil = (str) => {
-  let result = [];
-  // Solution code here...
+  let result = [str]
+  for(let i=1; i <=str.length; i++) {
+    result.push(str.slice(i))
+  }
   return result;
-};
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -27,8 +29,8 @@ Write a function name wordsToCharList that, given a string as input, returns a n
 For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 ------------------------------------------------------------------------------------------------ */
 
-const wordsToCharList = (arr) => {
-  // Solution code here...
+const wordsToCharList = (str) => {
+  return(str.split(''))
 };
 
 
@@ -74,10 +76,17 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  let result = [];
-  // Solution code here...
+  let result = []
+  for(let i = 0; i < gruffaloCrumble.ingredients.length; i++){
+    let firstIndexOfSpace = gruffaloCrumble.ingredients[i].indexOf(' ')
+    let removeNumber = gruffaloCrumble.ingredients[i].slice(firstIndexOfSpace+1)
+    let removeUnit = removeNumber.slice(removeNumber.indexOf(' '))
+    let removeExtraSpace = removeUnit.slice(1)
+    result.push(removeExtraSpace)
+  }
   return result;
 }
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -89,7 +98,10 @@ You may also use other string or array methods.
 
 const splitFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  for(let i = 0; i < gruffaloCrumble.ingredients.length; i++){
+    let word = gruffaloCrumble.ingredients[i].slice(' ', 2)
+    result.push(word)
+  }
   return result;
 }
 
@@ -221,7 +233,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+describe.only('Testing challenge 4', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
