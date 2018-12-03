@@ -97,10 +97,14 @@ You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
 const splitFoods = (recipe) => {
-  let result = [];
-  for(let i = 0; i < gruffaloCrumble.ingredients.length; i++){
-    let word = gruffaloCrumble.ingredients[i].slice(' ', 2)
-    result.push(word)
+  let result = []
+  for(let i =0; i <gruffaloCrumble.ingredients.length; i++){
+    let str = gruffaloCrumble.ingredients[i].substring(gruffaloCrumble.ingredients[i].indexOf(' ') + 1);
+    let str2 = str.substring(str.indexOf(' ') + 1);
+    result.push(str2)
+    // let str = gruffaloCrumble.ingredients[i].split(' ').pop()
+    // let str2 = str.split(' ').pop()
+    // result.push(str2)
   }
   return result;
 }
@@ -116,8 +120,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 ------------------------------------------------------------------------------------------------ */
 
 const stepActions = (recipe) => {
-  let result = [];
-  // Solution code here...
+  let result = []
+  for(let i = 0; i < gruffaloCrumble.steps.length; i++){
+    let words = gruffaloCrumble.steps[i].split(' ')
+    result.push(words[0])
+  }
   return result;
 }
 
@@ -135,9 +142,13 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
-  // Solution code here...
-};
-
+  var i = arr.length
+  while (i--) {
+    if (arr[i]%2===0) {
+      arr.splice(i, 1);
+    }
+  }
+}
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7
 
@@ -154,7 +165,14 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  let sliced = str.slice(0, str.length-numberOfCharacters)
+  if(numberOfCharacters>str.length){
+    return ''
+  } else if (numberOfCharacters<0){
+    return str
+  } else {
+    return sliced
+  }
 };
 
 
@@ -233,13 +251,13 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe.only('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
 });
 
-describe('Testing challenge 5', () => {
+describe.only('Testing challenge 5', () => {
   test('It should return a list of recipe steps', () => {
     expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
     expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
