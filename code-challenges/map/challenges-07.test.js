@@ -41,9 +41,9 @@ Write a function named mapTwoToThe that produces the same output as your forLoop
 ------------------------------------------------------------------------------------------------ */
 
 const mapTwoToThe = (arr) => {
-  // Solution code here...
+  let map1 = arr.map(x => Math.pow(2, x))
+  return map1
 }
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -187,7 +187,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe.only('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -198,7 +198,7 @@ describe.only('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+describe.only('Testing challenge 3', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
