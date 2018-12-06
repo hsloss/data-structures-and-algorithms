@@ -13,7 +13,8 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-  // Solution code here...
+  let regex = /([0-9])/;
+  return regex.test(input)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,7 +112,7 @@ Run your tests from the console: jest challenges-04.solution.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-describe('Testing challenge 1', () => {
+describe.only('Testing challenge 1', () => {
   test('It should return true if the input is a number', () => {
     expect(isNum(1234567890)).toBeTruthy();
     expect(isNum('12345')).toBeTruthy();
