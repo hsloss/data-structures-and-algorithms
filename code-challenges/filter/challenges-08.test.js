@@ -38,8 +38,10 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
-};
+  let notDups = arr.filter(value => !forbiddenValues.includes(value))
+  return notDups
+}
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -181,7 +183,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe.only('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return an array containing only words that have vowels', () => {
     expect(filterStringsWithVowels(['gregor','hound','xyz'])).toStrictEqual(['gregor', 'hound']);
     expect(filterStringsWithVowels(['gregor','hound','xyz']).length).toStrictEqual(2);
@@ -194,7 +196,7 @@ describe.only('Testing challenge 2', () => {
   })
 });
 
-describe('Testing challenge 3', () => {
+describe.only('Testing challenge 3', () => {
   const firstNums = [1, 2, 3];
   const secondNums = [1, 2, 3, 4];
 
