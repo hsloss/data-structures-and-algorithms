@@ -73,7 +73,10 @@ let starWarsData = [{
 }]
 
 const returnNames = (arr) => {
-  // Solution code here...
+  const names = arr.reduce((acc, val, idx) => {
+    acc.push(val.name);
+    return acc;
+  }, [] );
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -241,13 +244,13 @@ DO NOT CHANGE any of the below code.
 Run your tests from the console: jest challenges-09.test.js
 ------------------------------------------------------------------------------------------------ */
 
-describe.only('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the length of the array', () => {
     expect(countNumberOfElements([1, 2, 3, 4, 5])).toStrictEqual(5);
   });
 });
 
-describe('Testing challenge 2', () => {
+describe.only('Testing challenge 2', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
