@@ -88,8 +88,16 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (arr) => {
-  // Solution code here...
-};
+  const reverse = arr.reduce((acc, val) => {
+    arr.forEach(element => {
+      acc = arr.length
+      val = arr[acc - 1].value
+      element = val
+      return element
+    })
+  })
+  return reverse
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -141,8 +149,20 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
-};
+  let numberOfChildrenArr = arr.map( (character) => {
+    if(character.children !== undefined)
+      return character.children.length
+  })
+  let totalNumberOfChildren = numberOfChildrenArr.reduce(function(accumulator, currentValue) {
+    if(currentValue !== undefined){
+      return accumulator + currentValue
+    }
+    else {
+      return accumulator
+    }
+  })
+  return totalNumberOfChildren
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -250,7 +270,7 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe.only('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return an array continaing the names of the characters', () => {
     expect(returnNames(starWarsData)).toStrictEqual([ 'Luke Skywalker', 'C-3PO', 'R2-D2', 'Darth Vader', 'Leia Organa' ]);
     expect(returnNames(starWarsData).length).toStrictEqual(5);
@@ -263,7 +283,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+describe.only('Testing challenge 4', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
