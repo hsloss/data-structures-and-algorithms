@@ -195,12 +195,12 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
+  let count = 0
   let getPrimes = arr.reduce((total, num) => {
     if(isPrime(num)){
-      console.log(num, 'true', total)
-      total++
+      count++
     }
-    return total
+    return count
   })
   return getPrimes
 }
