@@ -173,8 +173,9 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
-};
+  var result = arr.reduce((total, num) => (total + num))
+  return result/arr.length
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6
@@ -194,8 +195,17 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+  let getPrimes = arr.reduce((total, num) => {
+    if(isPrime(num)){
+      console.log(num, 'true', total)
+      total++
+    }
+    return total
+  })
+  return getPrimes
 }
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -283,7 +293,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe.only('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
@@ -295,7 +305,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-describe('Testing challenge 6', () => {
+describe.only('Testing challenge 6', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
