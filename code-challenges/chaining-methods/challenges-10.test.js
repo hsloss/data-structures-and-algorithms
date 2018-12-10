@@ -63,8 +63,13 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
-};
+  let filteredArray = input.forEach(function(element) {
+    element.filter(number => (number % 5) === true)
+  })
+  return filteredArray
+}
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -129,7 +134,10 @@ let starWarsData = [{
 }]
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+  let find = data.filter(findGender)
+    obj.gender = ('male' || 'female')
+  })
+  maleAndFemale.name.join(' and ')
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -165,7 +173,7 @@ describe('Testing challenge 1', () => {
   })
 });
 
-describe.only('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add all the numbers in the arrays', () => {
     const nums = [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]];
 
@@ -187,7 +195,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+describe.only('Testing challenge 4', () => {
   test('It should return only characters that are male or female', () => {
     expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
     expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
