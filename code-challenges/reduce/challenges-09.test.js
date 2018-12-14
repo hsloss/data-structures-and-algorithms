@@ -87,18 +87,13 @@ Write a function named reversedString that takes in a string and returns a strin
 Note: You must use reduce for this challenge. You may not use the built-in .reverse() string method.
 ------------------------------------------------------------------------------------------------ */
 
-const reversedString = (arr) => {
-  const reverse = arr.reduce((acc, val) => {
-    arr.forEach(element => {
-      acc = arr.length
-      val = arr[acc - 1].value
-      element = val
-      return element
-    })
+const reversedString = (str) => {
+  let arr = str.split('')
+  let reducer = arr.reduce(function(prevVal, curVal, indx){
+    return indx === arr.length ? curVal : curVal + prevVal
   })
-  return reverse
+  return reducer
 }
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
@@ -287,7 +282,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+describe.only('Testing challenge 3', () => {
   test('It should return the string with the characters in reverse order', () => {
     expect(reversedString('Code 301')).toStrictEqual('103 edoC');
   });
@@ -305,7 +300,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-describe.only('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
